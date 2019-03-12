@@ -5,12 +5,6 @@ module.exports = {
 	protocol: 'http',
 	port: 9000,
 	script: 'server/bin/www',
-	whitelists: [
-		'*'
-	],
-	blacklists: [
-		'!213.15.*'
-	],
 	forever: {
 		max: 3,
 		silent: false,
