@@ -26,13 +26,21 @@
 		Ext.tip.QuickTipManager.init();
 
 		Ext.onReady(function (e) {
+            var BACKGROUND_IMAGE = '/assets/landing.jpg';
 			Ext.create('Ext.container.Viewport', {
 				layout: 'border',
+                style: {
+                    backgroundImage: 'url('+BACKGROUND_IMAGE+')',
+                    backgroundSize: 'cover'
+                },
 				items: [{
 						xtype: 'toolbar',
 						region: 'north',
 						padding: '8 0 8 8',
 						defaultButtonUI: 'default',
+                        style: {
+                            backgroundColor: 'rgba(255, 255, 255, .7)'
+                        },
 						items: [{
 								xtype: 'component',
 								margin: '0 80 0 0',
@@ -50,6 +58,9 @@
 						region: 'south',
 						padding: '8 0 8 8',
 						defaultButtonUI: 'default',
+                        style: {
+                            backgroundColor: 'rgba(255, 255, 255, .7)'
+                        },
 						items: [
 							'->',
 							{
