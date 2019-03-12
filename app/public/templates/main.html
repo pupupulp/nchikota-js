@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>${name} - ${abbrev}</title>
+	<link rel="stylesheet" href="/lib/extjs/classic/theme-triton/resources/theme-triton-all.css" />
+	<link rel="stylesheet" href="/lib/extjs/packages/charts/classic/triton/resources/charts-all.css" />
+	<link rel="stylesheet" href="/lib/extjs/packages/ux/classic/triton/resources/ux-all.css" />
+	<link rel="stylesheet" href="/lib/extjs/packages/font-awesome/resources/font-awesome-all.css" />
+	<link rel="stylesheet" href="/css/app.css" />
+	<script type="text/javascript" src="/lib/extjs/ext-all.js"></script>
+	<script type="text/javascript" src="/lib/extjs/classic/theme-triton/theme-triton.js"></script>
+	<script type="text/javascript" src="/lib/extjs/packages/charts/classic/charts.js"></script>
+	<script type="text/javascript" src="/lib/extjs/packages/ux/classic/ux.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		Ext.Loader.setPath({
+			'${package}': '${entry}'
+		});
+	</script>
+
+	<script type="text/javascript">
+		Ext.tip.QuickTipManager.init();
+
+		Ext.onReady(function (e) {
+			Ext.create('Ext.container.Viewport', {
+				layout: 'border',
+				items: [{
+						xtype: 'toolbar',
+						region: 'north',
+						padding: '8 0 8 8',
+						defaultButtonUI: 'default',
+						items: [{
+								xtype: 'component',
+								margin: '0 80 0 0',
+								html: '' +
+									'<h1 class="x-panel-header">' +
+									'<a id="system-logo" href="">${abbrev}</a>' +
+									'</h1>',
+								bodyPadding: 6
+							},
+						]
+					},
+					Ext.create('${package}.views.${module}'),
+					{
+						xtype: 'toolbar',
+						region: 'south',
+						padding: '8 0 8 8',
+						defaultButtonUI: 'default',
+						items: [
+							'->',
+							{
+								xtype: 'component',
+								region: 'south',
+								html: '' +
+									'<h4 id="system-copyright">Copyright &copy ${year}&nbsp;${author}</h4>',
+								bodyPadding: 2,
+							},
+							'->',
+							{
+								xtype: 'component',
+								region: 'south',
+								width: '20px',
+								html: '' +
+									'<a id="system-status" href="/monitor-status" target="blank">' +
+									'<span class="fa fa-heartbeat"></span>' +
+									'</a>',
+								bodyPadding: 2,
+							},
+						]
+					}
+				]
+			});
+		});
+	</script>
+</body>
+
+</html>
