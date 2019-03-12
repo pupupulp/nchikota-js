@@ -1,12 +1,8 @@
-const express = require('express');
 const VitalSigns = require('vitalsigns');
 
-// eslint-disable-next-line no-undef
 const logger = demand('middlewares/logger');
-// eslint-disable-next-line no-undef
 const config = demand('configs');
 
-const router = express.Router();
 const vitals = new VitalSigns(config.server.vitals);
 
 vitals.monitor('cpu');
@@ -34,6 +30,4 @@ vitals.on('healthChange', (healthy, checks) => {
 	logger.info('Uptime proc: ' + checks.uptime.proc + 's');
 });
 
-router.get('/monitor-health', vitals.express);
-
-module.exports = router;
+module.exports = vitals;

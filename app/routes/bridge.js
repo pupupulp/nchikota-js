@@ -1,15 +1,12 @@
 const express = require('express');
 
-// eslint-disable-next-line no-undef
-const healthCheckRouter = demand('routes/health-check');
-// eslint-disable-next-line no-undef
+const monitorRouter = demand('routes/monitor');
 const securityViolationRouter = demand('routes/security-violation');
-// eslint-disable-next-line no-undef
 const maintenanceRouter = demand('routes/maintenance');
 
 const router = express.Router();
 
-router.use(healthCheckRouter);
+router.use(monitorRouter);
 router.use(securityViolationRouter);
 router.use(maintenanceRouter);
 
