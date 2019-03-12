@@ -13,7 +13,7 @@ const info = {
 	year
 };
 
-router.get('/proto-admin-user', (req, res) => {
+router.get('/', (req, res) => {
 	res.render('main', {
 		locals: {
 			...info,
