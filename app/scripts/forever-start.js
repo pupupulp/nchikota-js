@@ -1,6 +1,8 @@
 global.demand = path => require(`${__dirname}/../${path}`);
 
 const forever = require('forever-monitor');
+const fs = require('fs');
+const moment = require('moment');
 
 // eslint-disable-next-line no-undef
 const logger = demand('middlewares/logger');
@@ -8,6 +10,13 @@ const logger = demand('middlewares/logger');
 const handler = demand('helpers/handler');
 // eslint-disable-next-line no-undef
 const config = demand('configs');
+
+const date = moment().format('YYYYMMDD');
+const logsDirectory = `logs/${date}`;
+
+if (!fs.existsSync(logsDirectory)) {
+	fs.mkdirSync(logsDirectory);
+}
 
 const child = new(forever.Monitor)(config.server.script, config.server.forever);
 
