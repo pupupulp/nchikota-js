@@ -1,0 +1,29 @@
+{
+  "name": "nchikota-js",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "description": "An opensource tech stack composed of ExpressJS, NodeJS, ExtJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "nyc mocha",
+    "start": "node ./app/scripts/forever-start.js",
+    "setup": "rm -rf node_modules && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pupupulp/nchikota-js.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "ExpressJS",
+    "NodeJS"
+  ],
+  "author": "Eagan Martin",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pupupulp/nchikota-js/issues"
+  },
+  "homepage": "https://github.com/pupupulp/nchikota-js#readme"
+}
