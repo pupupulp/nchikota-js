@@ -34,6 +34,6 @@ vitals.on('healthChange', (healthy, checks) => {
 	logger.info('Uptime proc: ' + checks.uptime.proc + 's');
 });
 
-router.get('/monitor/health', vitals.express);
+router.get('/monitor-health', vitals.express);
 
 module.exports = router;
