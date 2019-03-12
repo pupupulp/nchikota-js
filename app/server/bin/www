@@ -9,6 +9,21 @@ const logger = demand('middlewares/logger');
 // eslint-disable-next-line no-undef
 const config = demand('configs');
 
+const normalizePort = (value) => {
+	const port = parseInt(value, 10);
+	let result = false;
+
+	if (isNaN(port)) {
+		result = value;
+	}
+
+	if (port >= 0) {
+		result = port;
+	}
+
+	return result;
+};
+
 const server = http.createServer(app);
 const port = normalizePort(config.server.port);
 
@@ -38,17 +53,3 @@ server.on('listening', () => {
 	logger.info('Listening on port ' + address.port);
 });
 
-const normalizePort = (value) => {
-	const port = parseInt(value, 10);
-	let result = false;
-
-	if(isNaN(port)) {
-		result = value;
-	}
-
-	if(port >= 0) {
-		result = port;
-	}
-
-	return result;
-};
