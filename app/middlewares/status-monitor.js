@@ -8,7 +8,7 @@ const appMonitor = monitor({
 	healthChecks: [{
 		protocol: config.server.protocol,
 		host: 'localhost',
-		path: '/monitor/health',
+		path: '/monitor-health',
 		port: config.server.port
 	}, ]
 
