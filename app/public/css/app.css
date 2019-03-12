@@ -1,0 +1,125 @@
+#landing-header {
+    padding-left: 2%;
+    text-decoration:none;
+    color: cornflowerblue;
+}
+
+#landing-footer {
+    text-align: center;
+    color: cornflowerblue;
+}
+
+#system-logo {
+    padding-left: 25%;
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+#system-copyright {
+    text-align: center;
+    color: slategray;
+}
+
+#system-author {
+    text-decoration:none;
+    color: cornflowerblue;
+}
+
+#system-status {
+    text-decoration:none;
+    color: slategray;
+}
+
+.login-error {
+    text-align: center;
+    color: crimson;
+}
+
+.login-fail-count {
+    text-align: center;
+    color: crimson;
+}
+
+.password-preview {
+    float: right;
+}
+
+.reset-password {
+    text-align: right;
+    text-decoration: none;
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+.x-boundlist-item-header {
+    font-weight: bold;
+    margin: 1px 3px 0 26px;
+    border-bottom: 1px solid #ddd;
+}
+
+.x-boundlist-item {
+    margin: 1px 3px 0 20px;
+}
+
+.group-header {
+    margin: 4px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.x-tree-node-icon {
+    display: none;
+}
+
+.x-form-trigger.fa {
+    background-image: none !important;
+    text-align: center;
+    padding-top: 10px;
+    color: #CFD8DC;
+}
+
+.x-form-trigger.fa:active {
+    color: black;
+}
+
+.app-selection {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    background-color: #3892d4;
+    /*border: 5px solid #157fcc;*/
+    /*background-image: linear-gradient(lightblue, blue);*/
+    border-radius: 5px;
+    /*box-shadow: 5px 5px 5px grey;*/
+}
+
+.app-selection:hover {
+    /*background: linear-gradient(blue, lightblue);*/
+    background-color: #157fcc;
+}
+
+.fieldlabel-bold {
+    font-weight: bold;
+}
+
+.red {
+    color: #B71C1C;
+}
+
+.green {
+    color: #008000;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+.orange {
+    color: #ffa500;
+}
+
+.required .x-form-item-label-inner:before {
+    content: '* ';
+    color: red;
+    font-weight: bold;
+}
