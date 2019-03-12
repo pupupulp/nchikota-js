@@ -13,7 +13,7 @@ const isTrustedError = (error) => {
 	return error.isOperational;
 };
 
-const errorHandler = () => {
+const errorHandler = function() {
 	this.handleError = handleError;
 	this.isTrustedError = isTrustedError;
 }
