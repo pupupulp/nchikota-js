@@ -4,17 +4,12 @@ const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const path = require('path');
 
-// eslint-disable-next-line no-undef
 const secure = demand('middlewares/security');
-// eslint-disable-next-line no-undef
-const monitor = demand('middlewares/status-monitor');
-// eslint-disable-next-line no-undef
 const routers = demand('routes/bridge');
 
 const app = express();
 
 secure(app);
-monitor(app);
 
 app
 	.engine('html', es6Renderer)
