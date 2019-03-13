@@ -2,6 +2,8 @@
 
 An opensource tech stack composed of ExpressJS, NodeJS, ExtJS
 
+*Feel free to contribute if you like*
+
 ## How to use
 
 1. Clone the repository
@@ -18,5 +20,3 @@ An opensource tech stack composed of ExpressJS, NodeJS, ExtJS
 
 5. For running tests (optional)
     `npm test`
-
-*Feel free to contribute if you like*.
