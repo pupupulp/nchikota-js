@@ -88,6 +88,13 @@ module.exports = app => {
 	 */
 	app.use(helmet.frameguard({ action: 'sameorigin' }));
 
+	/**
+	 * * X-Powered-By
+	 *
+	 * * removes or changes the X-Powered-By header
+	 * * to avoid exploitation of known vulnerabilities
+	 * * on whatever technology you are using
+	 */
 	app.use(helmet.hidePoweredBy({
 		setTo: config.security.poweredBy
 	}));
