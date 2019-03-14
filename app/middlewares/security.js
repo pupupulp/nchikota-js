@@ -139,7 +139,11 @@ module.exports = app => {
 	app.options('*', cors());
 	app.use(cors());
 
-	// TODO: Fix HTTPS protocol
+	/**
+	 * * Enforces HTTPS connections on any incoming GET and HEAD requests
+	 * * any HTTP request will automatically redirects to an HTTPS address
+	 */
+	// TODO: Needs certificate
 	// app.use(sslify.HTTPS());
 
 	// const overloadConfig = {
