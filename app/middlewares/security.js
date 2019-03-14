@@ -95,9 +95,7 @@ module.exports = app => {
 	 * * to avoid exploitation of known vulnerabilities
 	 * * on whatever technology you are using
 	 */
-	app.use(helmet.hidePoweredBy({
-		setTo: config.security.poweredBy
-	}));
+	app.use(helmet.hidePoweredBy({ setTo: config.security.poweredBy }));
 
 	/**
 	 * * Strict-Transport-Security
@@ -106,17 +104,15 @@ module.exports = app => {
 	 * * it helps to mitigate man-in-the-middle attacks
 	 */
 	const thirtyDaysInSeconds = 2592000;
-	app.use(helmet.hsts({
-		maxAge: thirtyDaysInSeconds
-	}));
+	app.use(helmet.hsts({ maxAge: thirtyDaysInSeconds }));
 
-	// app.use(helmet.ieNoOpen());
-
-	// app.use(helmet.noCache());
-
-	// app.use(helmet.noSniff());
-
-	// app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+	/**
+	 * * Referrer-Policy
+	 *
+	 * * sets the value of Referer
+	 * * it tells a server where a request is coming from
+	 */
+	app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
 	app.use(helmet.xssFilter({
 		reportUri: '/violation-xss'
