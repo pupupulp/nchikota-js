@@ -70,7 +70,15 @@ module.exports = app => {
 	 */
 	app.use(helmet.permittedCrossDomainPolicies());
 
-	// app.use(helmet.dnsPrefetchControl());
+	/**
+	 * * X-DNS-Prefetch-Control
+	 *
+	 * * restricts DNS requests that happens even before
+	 * * the user clicks a link or loads a resource
+	 *
+	 * * defaults to off
+	 */
+	app.use(helmet.dnsPrefetchControl());
 
 	// app.use(helmet.frameguard({ action: 'sameorigin' }));
 
