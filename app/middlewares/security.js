@@ -173,8 +173,15 @@ module.exports = app => {
 	});
 	app.use(ddos.express);
 
-	// httpErrorPages.express(app, {
-	// 	lang: 'en_US',
-	// 	footer: config.server.admin
-	// });
+	/**
+	 * * HTTP Error Pages
+	 *
+	 * * displays pre-built pages for status codes 4XX and 5XX
+	 *
+	 * * comment out to display error on development
+	 */
+	httpErrorPages.express(app, {
+		lang: 'en_US',
+		footer: config.server.admin
+	});
 };
