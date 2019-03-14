@@ -114,9 +114,14 @@ module.exports = app => {
 	 */
 	app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
 
-	app.use(helmet.xssFilter({
-		reportUri: '/violation-xss'
-	}));
+	/**
+	 * * X-XSS-Protection
+	 *
+	 * * prevents reflected XSS attacks
+	 *
+	 * * defaults to 1; mode=block
+	 */
+	app.use(helmet.xssFilter({ reportUri: '/violation-xss' }));
 
 	// app.use(cors());
 
