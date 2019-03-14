@@ -9,7 +9,7 @@
   "scripts": {
     "test": "nyc mocha",
     "start": "node ./app/scripts/forever-start.js",
-    "setup": "rm -rf node_modules && npm install"
+    "preinstall": "rm -rf node_modules && npm install"
   },
   "repository": {
     "type": "git",
