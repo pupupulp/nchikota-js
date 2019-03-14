@@ -8,7 +8,6 @@ const overloadProtection = require('overload-protection');
 const Ddos = require('ddos');
 const jwt = require('express-jwt');
 const jwtBlacklist = require('express-jwt-blacklist');
-const ipFilter = require('express-ip-filter');
 const httpErrorPages = require('http-error-pages');
 
 const logger = demand('middlewares/logger');
@@ -46,15 +45,7 @@ module.exports = app => {
 	 * * - plugins
 	 * * - etc
 	 */
-	app.use(helmet.contentSecurityPolicy({
-		directives: {
-			defaultSrc: ["'self'"],
-			scriptSrc: ["'self'"],
-			styleSrc: ["'self'"],
-			reportUri: '/violation-csp'
-		},
-		reportOnly: true
-	}));
+	app.use(helmet.contentSecurityPolicy(config.security.csp));
 
 	/**
 	 * * X-Permitted-Cross-Domain-Policies
@@ -82,7 +73,7 @@ module.exports = app => {
 	 * * mitigates clickjacking attacks
 	 * * allow only from same origin
 	 */
-	app.use(helmet.frameguard({ action: 'sameorigin' }));
+	app.use(helmet.frameguard(config.security.frameguard));
 
 	/**
 	 * * X-Powered-By
@@ -91,7 +82,7 @@ module.exports = app => {
 	 * * to avoid exploitation of known vulnerabilities
 	 * * on whatever technology you are using
 	 */
-	app.use(helmet.hidePoweredBy({ setTo: config.security.poweredBy }));
+	app.use(helmet.hidePoweredBy(config.security.poweredBy));
 
 	/**
 	 * * Strict-Transport-Security
@@ -99,8 +90,7 @@ module.exports = app => {
 	 * * keeps users on HTTPS or tells browsers to stick with HTTPS
 	 * * it helps to mitigate man-in-the-middle attacks
 	 */
-	const thirtyDaysInSeconds = 2592000;
-	app.use(helmet.hsts({ maxAge: thirtyDaysInSeconds }));
+	app.use(helmet.hsts(config.security.hsts));
 
 	/**
 	 * * Referrer-Policy
@@ -108,7 +98,7 @@ module.exports = app => {
 	 * * sets the value of Referer
 	 * * it tells a server where a request is coming from
 	 */
-	app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+	app.use(helmet.referrerPolicy(config.security.referrer));
 
 	/**
 	 * * X-XSS-Protection
@@ -117,7 +107,7 @@ module.exports = app => {
 	 *
 	 * * defaults to 1; mode=block
 	 */
-	app.use(helmet.xssFilter({ reportUri: '/violation-xss' }));
+	app.use(helmet.xssFilter(config.security.xss));
 
 	/**
 	 * * Access-Control-*
@@ -145,16 +135,7 @@ module.exports = app => {
 	/**
 	 * * Load detection and shedding capabilities
 	 */
-	const overloadConfig = {
-		production: process.env.NODE_ENV === 'production',
-		clientRetrySecs: 1,
-		sampleInterval: 5,
-		maxEventLoopDelay: 42,
-		maxHeapUsedBytes: 0,
-		maxRssBytes: 0,
-		errorPropagationMode: false
-	};
-	app.use(overloadProtection('express', overloadConfig));
+	app.use(overloadProtection('express', config.security.overload));
 
 	/**
 	 * * Denial-Of-Service prevention for http services
@@ -180,8 +161,5 @@ module.exports = app => {
 	 *
 	 * * comment out to display error on development
 	 */
-	httpErrorPages.express(app, {
-		lang: 'en_US',
-		footer: config.server.admin
-	});
+	httpErrorPages.express(app, config.security.errorPages);
 };
