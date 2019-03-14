@@ -41,15 +41,24 @@ module.exports = app => {
 	// 	isRevoked: jwtBlacklist.isRevoked
 	// }));
 
-	// app.use(helmet.contentSecurityPolicy({
-	// 	directives: {
-	// 		defaultSrc: ["'self'"],
-	// 		scriptSrc: ["'self'"],
-	// 		styleSrc: ["'self'"],
-	// 		reportUri: '/violation-csp'
-	// 	},
-	// 	reportOnly: true
-	// }));
+	/**
+	 * * Content-Security-Policy
+	 *
+	 * * protects againts malicious injection (XSS) of:
+	 * * - JavaScript
+	 * * - CSS
+	 * * - plugins
+	 * * - etc
+	 */
+	app.use(helmet.contentSecurityPolicy({
+		directives: {
+			defaultSrc: ["'self'"],
+			scriptSrc: ["'self'"],
+			styleSrc: ["'self'"],
+			reportUri: '/violation-csp'
+		},
+		reportOnly: true
+	}));
 
 	// app.use(helmet.permittedCrossDomainPolicies());
 
