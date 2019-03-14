@@ -1,35 +1,16 @@
-const compression = require('compression');
-const minify = require('express-minify');
-const minifyHtml = require('express-minify-html');
+const jwt = require('express-jwt');
+const jwtBlacklist = require('express-jwt-blacklist');
 const helmet = require('helmet');
 const cors = require('cors');
 const sslify = require('express-sslify');
 const overloadProtection = require('overload-protection');
 const Ddos = require('ddos');
-const jwt = require('express-jwt');
-const jwtBlacklist = require('express-jwt-blacklist');
 const httpErrorPages = require('http-error-pages');
 
 const logger = demand('middlewares/logger');
 const config = demand('configs');
 
-module.exports = app => {
-	app.use(compression());
-	app.use(minify());
-	app.use(minifyHtml({
-		override: true,
-		exception_url: false,
-		htmlMinifier: {
-			removeComments: true,
-			collapseWhitespace: true,
-			collapseBooleanAttributes: true,
-			removeAttributeQuotes: true,
-			removeEmptyAttributes: true,
-			minifyJS: true
-		}
-	}));
-
-
+module.exports = (app) => {
 	// TODO: Change secret
 	// app.use(jwt({
 	// 	secret: 'secret-here',

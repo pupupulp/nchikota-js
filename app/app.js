@@ -4,11 +4,13 @@ const bodyParser = require('body-parser');
 const es6Renderer = require('express-es6-template-engine');
 const path = require('path');
 
+const minify = demand('middlewares/minify');
 const secure = demand('middlewares/security');
 const routers = demand('routes/bridge');
 
 const app = express();
 
+minify(app);
 secure(app);
 
 app
@@ -19,9 +21,7 @@ app
 app
 	.use(requestId)
 	.use(bodyParser.json())
-	.use(bodyParser.urlencoded({
-		extended: false
-	}))
+	.use(bodyParser.urlencoded({ extended: false }))
 	.use(routers)
 	.use(express.static(path.join(__dirname, 'public')));
 
