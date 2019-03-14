@@ -11,12 +11,8 @@ const jwtBlacklist = require('express-jwt-blacklist');
 const ipFilter = require('express-ip-filter');
 const httpErrorPages = require('http-error-pages');
 
+const logger = demand('middlewares/logger');
 const config = demand('configs');
-
-const ddos = new Ddos({
-	burst: 10,
-	limit: 15
-});
 
 module.exports = app => {
 	app.use(compression());
@@ -160,7 +156,22 @@ module.exports = app => {
 	};
 	app.use(overloadProtection('express', overloadConfig));
 
-	// app.use(ddos.express);
+	/**
+	 * * Denial-Of-Service prevention for http services
+	 *
+	 * * limit is the maximum request allowed, if exceeded the request is denied
+	 * * maxcount is the amount of punishment applied to a denial time out
+	 * * burst is the amount of allowed burst request before being penalize
+	 * * maxexpiry is maximun expiration time of penalty in seconds
+	 */
+	const onDenial = function (req) {
+		logger.info('Denied ' + req.method + ' request from ' + req.ip + ' due to possible DOS attack');
+	};
+	const ddos = new Ddos({
+		...config.security.ddos,
+		onDenial
+	});
+	app.use(ddos.express);
 
 	// httpErrorPages.express(app, {
 	// 	lang: 'en_US',
