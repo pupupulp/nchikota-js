@@ -146,18 +146,20 @@ module.exports = app => {
 	// TODO: Needs certificate
 	// app.use(sslify.HTTPS());
 
-	// const overloadConfig = {
-	// 	production: process.env.NODE_ENV === 'production',
-	// 	clientRetrySecs: 1,
-	// 	sampleInterval: 5,
-	// 	maxEventLoopDelay: 42,
-	// 	maxHeapUsedBytes: 0,
-	// 	maxRssBytes: 0,
-	// 	errorPropagationMode: false
-	// };
+	/**
+	 * * Load detection and shedding capabilities
+	 */
+	const overloadConfig = {
+		production: process.env.NODE_ENV === 'production',
+		clientRetrySecs: 1,
+		sampleInterval: 5,
+		maxEventLoopDelay: 42,
+		maxHeapUsedBytes: 0,
+		maxRssBytes: 0,
+		errorPropagationMode: false
+	};
+	app.use(overloadProtection('express', overloadConfig));
 
-	// TODO: Check ddos and overload protection for possible discarding of packages
-	// app.use(overloadProtection('express', overloadConfig));
 	// app.use(ddos.express);
 
 	// httpErrorPages.express(app, {
