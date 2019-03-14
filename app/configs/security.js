@@ -35,11 +35,11 @@ module.exports = {
 		errorPropagationMode: false
 	},
 	ddos: {
-		limit: 20,
-		maxcount: 10,
-		burst: 10,
+		limit: 100,
+		maxcount: 50,
+		burst: 100,
 		maxexpiry: 60,
-		Whitelists: [
+		whitelists: [
 			// '*'
 		],
 	},
@@ -47,7 +47,10 @@ module.exports = {
 		lang: 'en_US',
 		footer: 'security@admin.com'
 	},
-	blacklists: [
-		'!213.15.*'
-	],
+	blacklists: {
+		ip: [
+			'!213.15.*'
+		],
+		agent: []
+	}
 };

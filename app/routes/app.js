@@ -1,6 +1,8 @@
 const express = require('express');
 const moment = require('moment');
 
+const limiter = demand('middlewares/limiter');
+
 const router = express.Router();
 const year = moment().year();
 
@@ -13,14 +15,17 @@ const info = {
 	year
 };
 
-router.get('/', (req, res) => {
-	res.render('main', {
-		locals: {
-			...info,
-			module: 'LandingView',
-		}
+router.get('/',
+	limiter.slowDown,
+	limiter.global,
+	(req, res) => {
+		res.render('main', {
+			locals: {
+				...info,
+				module: 'LandingView',
+			}
+		});
 	});
-});
 
 
 module.exports = router;

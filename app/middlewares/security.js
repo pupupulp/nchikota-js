@@ -5,6 +5,7 @@ const cors = require('cors');
 const sslify = require('express-sslify');
 const overloadProtection = require('overload-protection');
 const Ddos = require('ddos');
+const agentBlocker = require('express-user-agent-blocker');
 const httpErrorPages = require('http-error-pages');
 
 const logger = demand('middlewares/logger');
@@ -134,6 +135,11 @@ module.exports = (app) => {
 		onDenial
 	});
 	app.use(ddos.express);
+
+	/**
+	 * * User Agent Blocker
+	 */
+	app.use(agentBlocker(config.security.blacklists.agent));
 
 	/**
 	 * * HTTP Error Pages
