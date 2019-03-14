@@ -99,11 +99,16 @@ module.exports = app => {
 		setTo: config.security.poweredBy
 	}));
 
-	// const thirtyDaysInSeconds = 2592000;
-
-	// app.use(helmet.hsts({
-	// 	maxAge: thirtyDaysInSeconds
-	// }));
+	/**
+	 * * Strict-Transport-Security
+	 *
+	 * * keeps users on HTTPS or tells browsers to stick with HTTPS
+	 * * it helps to mitigate man-in-the-middle attacks
+	 */
+	const thirtyDaysInSeconds = 2592000;
+	app.use(helmet.hsts({
+		maxAge: thirtyDaysInSeconds
+	}));
 
 	// app.use(helmet.ieNoOpen());
 
