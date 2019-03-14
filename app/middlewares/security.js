@@ -80,7 +80,13 @@ module.exports = app => {
 	 */
 	app.use(helmet.dnsPrefetchControl());
 
-	// app.use(helmet.frameguard({ action: 'sameorigin' }));
+	/**
+	 * * X-Frame-Options
+	 *
+	 * * mitigates clickjacking attacks
+	 * * allow only from same origin
+	 */
+	app.use(helmet.frameguard({ action: 'sameorigin' }));
 
 	app.use(helmet.hidePoweredBy({
 		setTo: config.security.poweredBy
