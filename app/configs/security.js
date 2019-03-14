@@ -1,5 +1,3 @@
-const config = demand('configs');
-
 const thirtyDaysInSeconds = 2592000;
 
 module.exports = {
@@ -47,10 +45,9 @@ module.exports = {
 	},
 	errorPages: {
 		lang: 'en_US',
-		footer: config.server.admin
+		footer: 'security@admin.com'
 	},
 	blacklists: [
 		'!213.15.*'
 	],
-	poweredBy: 'PHP 7.3.0'
 };
