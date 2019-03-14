@@ -60,7 +60,15 @@ module.exports = app => {
 		reportOnly: true
 	}));
 
-	// app.use(helmet.permittedCrossDomainPolicies());
+	/**
+	 * * X-Permitted-Cross-Domain-Policies
+	 *
+	 * * restricts clients like Flash and Acrobat
+	 * * from what data to load from our domain
+	 *
+	 * * defaults to none
+	 */
+	app.use(helmet.permittedCrossDomainPolicies());
 
 	// app.use(helmet.dnsPrefetchControl());
 
