@@ -34,13 +34,6 @@ module.exports = app => {
 		}
 	}));
 
-	// app.use(ipFilter({
-	// 	forbidden: '403: Get out of here!',
-	// 	filter: [
-	// 		...config.security.whitelists,
-	// 		...config.security.blacklists
-	// 	]
-	// }));
 
 	// TODO: Change secret
 	// app.use(jwt({
