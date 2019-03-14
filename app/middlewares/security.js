@@ -123,7 +123,21 @@ module.exports = app => {
 	 */
 	app.use(helmet.xssFilter({ reportUri: '/violation-xss' }));
 
-	// app.use(cors());
+	/**
+	 * * Access-Control-*
+	 *
+	 * * allows restricted resources to be requested from another domain
+	 *
+	 * * add cors to options for pre-flight request
+	 *
+	 * * defaults to
+	 * * origin: *
+	 * * methods: GET, HEAD, PUT, PATCH, POST, DELETE
+	 * * preflightContinue: false
+	 * * optionSuccessStatus: 204
+	 */
+	app.options('*', cors());
+	app.use(cors());
 
 	// TODO: Fix HTTPS protocol
 	// app.use(sslify.HTTPS());
