@@ -4,24 +4,18 @@ const logger = demand('middlewares/logger');
 
 const router = express.Router();
 
-router.get('/violation-csp', async (req, res) => {
-	let message = 'Empty data';
-
-	if (req.body) {
-		message = req.body;
-	}
+router.post('/violation-csp', async (req, res) => {
+	const content = req.body;
+	let message = content['csp-report']['violated-directive'] || 'Empty data';
 
 	await logger.info('CSP Violation: ' + message);
 
 	res.status(204).end();
 });
 
-router.get('/violation-xss', async (req, res) => {
-	let message = 'Empty data';
-
-	if (req.body) {
-		message = req.body;
-	}
+router.post('/violation-xss', async (req, res) => {
+	const content = req.body;
+	let message = content || 'Empty data';
 
 	await logger.info('XSS Violation: ' + message);
 
