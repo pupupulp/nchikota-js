@@ -13,7 +13,7 @@ An opensource tech stack composed of ExpressJS, NodeJS, ExtJS
     `cd nchikota-js`
 
 3. Install dependencies
-    `npm setup`
+    `npm install`
 
 4. Start the app
     `npm start`
