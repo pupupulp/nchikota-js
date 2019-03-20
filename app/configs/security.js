@@ -4,11 +4,13 @@ module.exports = {
 	csp: {
 		directives: {
 			defaultSrc: ["'self'"],
-			scriptSrc: ["'self'"],
-			styleSrc: ["'self'"],
+			scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+			styleSrc: ["'self'", "'unsafe-inline'"],
+			imgSrc: ["'self'", "data:"],
 			reportUri: '/violation-csp'
 		},
-		reportOnly: true
+		reportOnly: true,
+		setAllHeaders: true
 	},
 	frameguard: {
 		action: 'sameorigin'
