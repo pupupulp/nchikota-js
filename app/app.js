@@ -19,12 +19,13 @@ app
 	.set('views', path.join(__dirname, 'public', 'templates'))
 	.set('view engine', 'html');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app
 	.use(requestId)
 	.use(useragent.express())
 	.use(bodyParser.json())
 	.use(bodyParser.urlencoded({ extended: false }))
-	.use(routers)
-	.use(express.static(path.join(__dirname, 'public')));
+	.use(routers);
 
 module.exports = app;
