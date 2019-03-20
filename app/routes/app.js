@@ -1,5 +1,6 @@
 const express = require('express');
 const moment = require('moment');
+const kony = require('konyvtar-js');
 
 const limiter = demand('middlewares/limiter');
 
@@ -12,7 +13,8 @@ const info = {
 	package: 'App',
 	entry: 'js/landing',
 	author: 'Eagan Martin',
-	year
+	year,
+	kony,
 };
 
 router.get('/',
