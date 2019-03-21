@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# NPM
+npm-debug.log
+node_modules
+
+# App
+docs
+logs
+
+# Docker
+Dockerfile
+
+# Others
+coverage
+.nyc_output
+.sonarlint
+.vscode
