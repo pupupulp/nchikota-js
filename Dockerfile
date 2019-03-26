@@ -21,7 +21,8 @@ ENV APP_PORT=8000
 RUN apt-get update \
     && apt-get install -qy \
         wget \
-        software-properties-common
+        software-properties-common \
+        python2.7
 
 # installation of node
 RUN mkdir -p ${NODE_PATH} && cd ${NODE_PATH} \
@@ -42,13 +43,17 @@ WORKDIR ${APP_PATH}
 
 # install app dependencies
 COPY package*.json ./
-RUN npm install -g node-gyp
-RUN npm install
+
+RUN npm config set registry to http://registry.npmjs.org/ \
+	&& npm cache clean \
+	&& npm install -g node-gyp
+
+# RUN npm install
 
 # load source code
-COPY . ./
+# COPY . ./
 
 # expose app
-EXPOSE 9000
+# EXPOSE 9000
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
