@@ -27,24 +27,11 @@ RUN apt-get update \
     && apt-get install -qy \
         wget \
         software-properties-common \
-        build-essential \
-        checkinstall \
-        libreadline-gplv2-dev \
-        libncursesw5-dev \
-        libssl-dev \
-        libsqlite3-dev \
-        tk-dev \
-        libgdbm-dev \
-        libc6-dev \
-        libbz2-dev
+		build-essential \
+		python2.7
 
 # installation of python
-RUN cd ${PYTHON_PATH} \
-	&& wget ${PYTHON_URL}/${PYTHON_VER}/Python-${PYTHON_VER}.tgz \
-	&& tar xzf Python-${PYTHON_VER}.tgz \
-	&& cd Python-${PYTHON_VER} \
-	&& ./configure --enable-optimizations \
-	&& make altinstall
+RUN ln -s /usr/bin/python2.7 /usr/bin/python
 
 # installation of node
 RUN mkdir -p ${NODE_PATH} && cd ${NODE_PATH} \
@@ -54,21 +41,11 @@ RUN mkdir -p ${NODE_PATH} && cd ${NODE_PATH} \
 # export node bin to path
 ENV PATH=${NODE_PATH}/node-${NODE_VER}-${NODE_DISTRO}/bin:${PATH}
 
-cleanup
+# cleanup
 RUN rm -rf ${NODE_PATH}/node-${NODE_VER}-${NODE_DISTRO}.tar.xz \
 	&& apt-get purge -qy --auto-remove \
 			wget \
 			software-properties-common \
-			build-essential \
-			checkinstall \
-			libreadline-gplv2-dev \
-			libncursesw5-dev \
-			libssl-dev \
-			libsqlite3-dev \
-			tk-dev \
-			libgdbm-dev \
-			libc6-dev \
-			libbz2-dev
 	&& rm -rf /var/lib/apt/lists/*
 
 # app setup
