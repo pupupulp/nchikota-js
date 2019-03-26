@@ -8,7 +8,7 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc mocha",
-    "start": "sudo node ./app/scripts/forever-start.js"
+    "start": "node ./app/scripts/forever-start.js"
   },
   "repository": {
     "type": "git",
