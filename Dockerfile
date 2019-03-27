@@ -20,7 +20,7 @@ ENV NODE_PATH=/usr/local/lib/nodejs
 
 # app environment variables
 ENV APP_PATH=/usr/src/app
-ENV APP_PORT=8000
+ENV APP_PORT=9000
 
 # installation of dependencies
 RUN apt-get update \
@@ -53,8 +53,7 @@ WORKDIR ${APP_PATH}
 
 # install app dependencies
 COPY package*.json ./
-RUN npm config set registry http://registry.npmjs.org/ \
-	&& npm cache clean --force \
+RUN npm cache clean --force \
 	&& npm install -g node-gyp \
 	&& npm install -g yarn \
 	&& yarn install
@@ -63,6 +62,7 @@ RUN npm config set registry http://registry.npmjs.org/ \
 COPY . ./
 
 # expose app
-EXPOSE 9000
+EXPOSE ${APP_PORT}
 
+# entry point
 CMD ["npm", "start"]
