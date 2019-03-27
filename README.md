@@ -97,27 +97,42 @@ $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 
 #### App Setup
 
-1. Clone the repository
+1. **Clone the repository**
 
 ```cli
 $ git clone https://github.com/pupupulp/nchikota-js.git
 ```
 
-2. Go to source directory
+2. **Go to source directory**
 ```cli
 $ cd nchikota-js
 ```
 
-4. Build docker image
+3. **Build docker image**
 ```cli
 $ docker build -t pupupulp/nchikotajs:1.0 .
 ```
 
 
 ### Usage
-Run docker image
+**Run docker image**
 ```cli
-$ docker run -p 9000:9000 pupupulp/nchikotajs:1.0
+$ docker run -d \
+    --name="nchikota" \
+    -p 9000:9000 \
+    --mount type=bind,source=$(pwd)/app,target=/usr/src/nchikota/app,readonly \
+    pupupulp/nchikotajs:1.0
+```
+
+### Build
+1. **Change permission of script**
+```cli
+$ chmod +x app/scripts/build.sh
+```
+
+2. **Run the script**
+```cli
+$ app/scripts/build.sh
 ```
 
 ## About

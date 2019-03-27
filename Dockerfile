@@ -19,7 +19,8 @@ ENV NODE_DISTRO=linux-x64
 ENV NODE_PATH=/usr/local/lib/nodejs
 
 # app environment variables
-ENV APP_PATH=/usr/src/app
+ENV APP_PATH=/usr/src/nchikota
+ENV APP_VOLUME=/usr/src/nchikota/app
 ENV APP_PORT=9000
 
 # installation of dependencies
@@ -58,11 +59,11 @@ RUN npm cache clean --force \
 	&& npm install -g yarn \
 	&& yarn install
 
-# load source code
-COPY . ./
-
 # expose app
 EXPOSE ${APP_PORT}
 
-# entry point
+# load app source code
+VOLUME ["${APP_VOLUME}"]
+
+# start app
 CMD ["npm", "start"]
