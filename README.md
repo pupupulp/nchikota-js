@@ -1,5 +1,9 @@
 # nchikota-js
 
+![contributors](https://badgen.net/github/contributors/pupupulp/nchikota-js)
+![stars](https://badgen.net/github/stars/pupupulp/nchikota-js)
+![commits](https://badgen.net/github/commits/pupupulp/nchikota-js)
+![last commit](https://badgen.net/github/last-commit/pupupulp/nchikota-js)
 [![License](https://badgen.net/github/license/pupupulp/nchikota-js)](https://github.com/pupupulp/nchikota-js/blob/master/LICENSE)
 
 An opensource tech stack composed of ExpressJS, NodeJS, ExtJS
