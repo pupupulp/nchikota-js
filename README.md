@@ -150,6 +150,7 @@ Pull requests and stars are always welcome. For bugs and feature requests, pleas
 You might want to checkout these projects:
 
 - [KonyvtarJS](https://github.com/pupupulp/konyvtar-js) - An opensource library/package of code wrappers for ExtJS 6.2.0 GPL.
+- [PasserelleJS](https://github.com/pupupulp/passerelle-js) - An opensource API gateway built with ExpressJS.
 
 ### Contributors
 
