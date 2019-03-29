@@ -8,20 +8,20 @@ LABEL maintainer="pupupulp"
 ENV DEBIAN_FRONTEND noninteractive
 
 # python environment variables
-ENV PYTHON_URL=https://www.python.org/ftp/python
-ENV PYTHON_VER=2.7.15
-ENV PYTHON_PATH=/usr/src
+ENV PYTHON_URL=https://www.python.org/ftp/python \
+	PYTHON_VER=2.7.15 \
+	PYTHON_PATH=/usr/src
 
 # node environment variables
-ENV NODE_URL=https://nodejs.org/dist
-ENV NODE_VER=v11.12.0
-ENV NODE_DISTRO=linux-x64
-ENV NODE_PATH=/usr/local/lib/nodejs
+ENV NODE_URL=https://nodejs.org/dist \
+	NODE_VER=v11.12.0 \
+	NODE_DISTRO=linux-x64 \
+	NODE_PATH=/usr/local/lib/nodejs
 
 # app environment variables
-ENV APP_PATH=/usr/src/nchikota
-ENV APP_VOLUME=/usr/src/nchikota/app
-ENV APP_PORT=9000
+ENV APP_PATH=/usr/src/nchikota \
+	APP_VOLUME=/usr/src/nchikota/app \
+	APP_PORT=9000
 
 # installation of dependencies
 RUN apt-get update \
