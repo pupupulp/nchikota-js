@@ -2,8 +2,7 @@ const express = require('express');
 const heapdump = require('heapdump');
 const fs = require('fs');
 
-// eslint-disable-next-line no-undef
-const logger = demand('middlewares/logger');
+const logger = demand('utils/logger');
 
 const router = express.Router();
 

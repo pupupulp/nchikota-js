@@ -1,8 +1,10 @@
 Ext.define('App.views.LandingView', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.landing',
-	controller: '',
-	requires: [],
+	requires: [
+		'App.controllers.LandingController'
+	],
+	controller: 'LandingController',
 
 	region: 'center',
 

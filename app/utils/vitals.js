@@ -1,6 +1,6 @@
 const VitalSigns = require('vitalsigns');
 
-const logger = demand('middlewares/logger');
+const logger = demand('utils/logger');
 const config = demand('configs');
 
 const vitals = new VitalSigns(config.server.vitals);

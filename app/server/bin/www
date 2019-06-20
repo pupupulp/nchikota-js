@@ -2,11 +2,8 @@ global.demand = path => require(`${__dirname}/../../${path}`);
 
 const http = require('http');
 
-// eslint-disable-next-line no-undef
 const app = demand('app');
-// eslint-disable-next-line no-undef
-const logger = demand('middlewares/logger');
-// eslint-disable-next-line no-undef
+const logger = demand('utils/logger');
 const config = demand('configs');
 
 const normalizePort = (value) => {

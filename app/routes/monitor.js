@@ -1,7 +1,7 @@
 const express = require('express');
 
-const vitals = demand('middlewares/vitals');
-const statusMonitor = demand('middlewares/status-monitor');
+const vitals = demand('utils/vitals');
+const statusMonitor = demand('utils/status-monitor');
 
 const router = express.Router();
 

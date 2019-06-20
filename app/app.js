@@ -5,8 +5,8 @@ const es6Renderer = require('express-es6-template-engine');
 const useragent = require('express-useragent');
 const path = require('path');
 
-const minify = demand('middlewares/minify');
-const secure = demand('middlewares/security');
+const minify = demand('utils/minify');
+const secure = demand('utils/security');
 const routers = demand('routes/bridge');
 
 const app = express();

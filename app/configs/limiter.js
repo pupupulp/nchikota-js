@@ -1,4 +1,4 @@
-const logger = demand('middlewares/logger');
+const logger = demand('utils/logger');
 
 module.exports = {
 	global: {

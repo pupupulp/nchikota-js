@@ -8,7 +8,7 @@ const Ddos = require('ddos');
 const agentBlocker = require('express-user-agent-blocker');
 const httpErrorPages = require('http-error-pages');
 
-const logger = demand('middlewares/logger');
+const logger = demand('utils/logger');
 const config = demand('configs');
 
 module.exports = (app) => {

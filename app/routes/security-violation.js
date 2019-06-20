@@ -1,6 +1,6 @@
 const express = require('express');
 
-const logger = demand('middlewares/logger');
+const logger = demand('utils/logger');
 
 const router = express.Router();
 
